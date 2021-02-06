@@ -74,7 +74,9 @@ function App() {
       });
   }, []);
 
-While (data  && astro && foreCast && sports === undefined) {return (<div>Loading your local forecast</div>);};
+do {return (<div>Loading your local forecast</div>);}
+
+while (data  && astro && foreCast && sports === undefined) 
 
   return (
     <div
