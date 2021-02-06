@@ -6,7 +6,7 @@ export default function Forecast(props) {
     return 
    { data === undefined ? (<div>Loading....</div>) : (
     <div>
-      <h3 style={{ textShadow: "0 0 1rem #aaa" }}>Local Forecast</h3>
+     {/* <h3 style={{ textShadow: "0 0 1rem #aaa" }}>Local Forecast</h3>
       {props.data.forecast.forecastday.map((item, idx) => {
         return (
           <div key={idx} style={{ backgroundColor: "#444", opacity: "0.8" }}>
@@ -57,7 +57,7 @@ export default function Forecast(props) {
           </div> //Innermost div
         ); // inner return end
       })} //map end 
-
+*\}
     </div> //outermost div
 )} //conditional end
 } //function block
