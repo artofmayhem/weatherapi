@@ -3,6 +3,7 @@ export default function Forecast(props) {
   console.log("forecast data", data);
 
   return (
+      
     <div>
       {/* if ( data === undefined ? <div>loading...</div> : 
       <h3 style={{ textShadow: "0 0 1rem #aaa" }}>Local Forecast</h3>
