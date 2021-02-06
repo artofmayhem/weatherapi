@@ -20,7 +20,7 @@ function App() {
   useEffect(() => {
     axios
       .get(
-        "http://api.weatherapi.com/v1/current.json?key=aa1aca8fef9d4c3f9c2123921210502&q=96822"
+        "https://api.weatherapi.com/v1/current.json?key=aa1aca8fef9d4c3f9c2123921210502&q=96822"
       )
       .then((res) => {
         setData(res.data);
@@ -35,7 +35,7 @@ function App() {
   useEffect(() => {
     axios
       .get(
-        "http://api.weatherapi.com/v1/astronomy.json?key=aa1aca8fef9d4c3f9c2123921210502&q=96822"
+        "https://api.weatherapi.com/v1/astronomy.json?key=aa1aca8fef9d4c3f9c2123921210502&q=96822"
       )
       .then((res) => {
         setAstro(res.data);
@@ -49,7 +49,7 @@ function App() {
   useEffect(() => {
     axios
       .get(
-        "http://api.weatherapi.com/v1/sports.json?key=aa1aca8fef9d4c3f9c2123921210502&q=96822"
+        "https://api.weatherapi.com/v1/sports.json?key=aa1aca8fef9d4c3f9c2123921210502&q=96822"
       )
       .then((res) => {
         setSports(res.data);
@@ -63,7 +63,7 @@ function App() {
   useEffect(() => {
     axios
       .get(
-        "http://api.weatherapi.com/v1/forecast.json?key=aa1aca8fef9d4c3f9c2123921210502&q=96822&days=5"
+        "https://api.weatherapi.com/v1/forecast.json?key=aa1aca8fef9d4c3f9c2123921210502&q=96822&days=5"
       )
       .then((res) => {
         setForecast(res.data);
