@@ -4,12 +4,14 @@ export default function Astronomy(props) {
   const data = { props };
   console.log("astronomy data from astronomy component", data);
   //console.log(props.data.astronomy.astro);
-  return (
+  
+if (data === undefined) {return <div>Loading your astronomy report...</div>}
+else {
+return (
     <div
       className="d-flex flex-column justify-content-center"
       style={{ padding: "3rem 0" }}
     >
-       if (data === undefined) ?  <div>loading...</div>: 
         <div>
           <h2 style={{textShadow:'0 0 1rem #aaa'}}>Your local astronomy report</h2>
           <table
@@ -37,5 +39,5 @@ export default function Astronomy(props) {
           </table>
         </div>
     </div>
-  );
+  )};
 }
