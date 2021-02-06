@@ -15,7 +15,7 @@ export default function Weather(props) {
           borderRadius: "10px",
         }}
       >
-        <img src={`http:${data.current.condition.icon}`} alt='time of day icon'></img> 
+        <img src={`https:${data.current.condition.icon}`} alt='time of day icon'></img> 
        <p style={{ padding: "0 5rem" }}>
           Today's cloud coverage in {data.location.name} is {data.current.cloud}%{" "}
           and {data.current.condition.text}

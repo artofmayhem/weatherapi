@@ -15,7 +15,7 @@ export default function Forecast(props) {
                 <tr>
                   <th>
                     <img
-                      src={`http:${item.data.forecast.forecastday[idx].day.condition.icon}`}
+                      src={`https:${item.data.forecast.forecastday[idx].day.condition.icon}`}
                       alt="time of day icon"
                     />
                   </th>
