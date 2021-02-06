@@ -74,12 +74,14 @@ function App() {
       });
   }, []);
 
+if (data === undefined) {return <div>Loading your local forecast</div>}
+else {
   return (
     <div
       className="App d-flex flex-column justify-content-center"
       style={{ minHeight: "100vh" }}
     >  
-     {data === undefined ? ( <div>loading...</div>) : (
+  
       <div className='d-flex flex-column justify-content-center'style={{marginTop: '5rem'}}>
       <form className="d-flex justify-content-center">
      
@@ -115,9 +117,9 @@ function App() {
       <Sports data={sports} />
       </div>
        
-       )}
+      
     </div>
-  );
+  )};
 }
 
 export default App;
