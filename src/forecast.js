@@ -3,7 +3,7 @@ export default function Forecast(props) {
   console.log("forecast data", data);
 
   
-    return (  
+    return 
    { data === undefined ? (<div>Loading....</div>) : (
     <div>
       <h3 style={{ textShadow: "0 0 1rem #aaa" }}>Local Forecast</h3>
@@ -60,5 +60,4 @@ export default function Forecast(props) {
 
     </div> //outermost div
 )} //conditional end
-); //return statement
 } //function block
