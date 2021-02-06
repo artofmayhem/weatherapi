@@ -74,8 +74,8 @@ function App() {
       });
   }, []);
 
-if (data  && astro && foreCast && sports === undefined) {return <div>Loading your local forecast</div>}
-else {
+While (data  && astro && foreCast && sports === undefined) {return <div>Loading your local forecast</div>}
+
   return (
     <div
       className="App d-flex flex-column justify-content-center"
@@ -119,7 +119,7 @@ else {
        
       
     </div>
-  )};
+  );
 }
 
 export default App;
