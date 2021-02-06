@@ -1,19 +1,73 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
+import Weather from "./weather";
+import Astronomy from "./astronomy.js";
+import Forecast from "./forecast.js";
+import Sports from "./sports.js";
 import "./App.css";
 import "bootstrap/dist/css/bootstrap.css";
+
+const initialFormValues = {
+  city: "Honolulu",
+};
+
 function App() {
   const [data, setData] = useState();
+  const [astro, setAstro] = useState();
+  const [sports, setSports] = useState();
+  const [foreCast, setForecast] = useState();
 
   useEffect(() => {
     axios
       .get(
-        "http://api.weatherapi.com/v1/current.json?key=aa1aca8fef9d4c3f9c2123921210502&q=Honolulu"
+        "http://api.weatherapi.com/v1/current.json?key=aa1aca8fef9d4c3f9c2123921210502&q=96822"
       )
       .then((res) => {
         setData(res.data);
-        console.log("fetched data", res.data);
-        console.log(res.data.location.name);
+        console.log("fetched current weather data", res.data);
+        //console.log(res.data.location.name);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  }, []);
+
+  useEffect(() => {
+    axios
+      .get(
+        "http://api.weatherapi.com/v1/astronomy.json?key=aa1aca8fef9d4c3f9c2123921210502&q=96822"
+      )
+      .then((res) => {
+        setAstro(res.data);
+        console.log("fetched astronomy data", res.data);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  }, []);
+
+  useEffect(() => {
+    axios
+      .get(
+        "http://api.weatherapi.com/v1/sports.json?key=aa1aca8fef9d4c3f9c2123921210502&q=96822"
+      )
+      .then((res) => {
+        setSports(res.data);
+        console.log("fetched sports data", res.data);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  }, []);
+
+  useEffect(() => {
+    axios
+      .get(
+        "http://api.weatherapi.com/v1/forecast.json?key=aa1aca8fef9d4c3f9c2123921210502&q=96822&days=5"
+      )
+      .then((res) => {
+        setForecast(res.data);
+        console.log("fetched forecast data", res.data);
       })
       .catch((error) => {
         console.log(error);
@@ -21,15 +75,22 @@ function App() {
   }, []);
 
   return (
-      <div
-        className="App jumbotron d-flex flex-row justify-content-between"
-        style={{ minHeight: "100vh" }}
-      >
-        <div className="d-flex justify-content-center flex-column align-items-center">
+    <div
+      className="App d-flex flex-column justify-content-center"
+      style={{ minHeight: "100vh" }}
+    >  
+     {data === undefined ? ( <div>loading...</div>) : (
+      <div className='d-flex flex-column justify-content-center'style={{marginTop: '5rem'}}>
+      <form className="d-flex justify-content-center">
+     
+        <div
+          className="d-flex justify-content-center flex-column align-items-center"
+          style={{ padding: "3rem" }}
+        >
           <p className="display-1">Hello {data.location.name}</p>
           <h5>
-            Your current date and time is {data.location.localtime}{" "}
-            {data.location.tz_id}
+            Your current date and time is {data.location.localtime} in the{" "}
+            {data.location.tz_id} timezone
           </h5>
           <div className="shadow">
             {" "}
@@ -47,54 +108,15 @@ function App() {
             </div>
           </div>
         </div>
-        <div
-          className="d-flex justify-content-center flex-column align-items-center"
-          style={{
-            backgroundColor: "#444",
-            opacity: "0.7",
-            boxShadow: "1rem 1rem 1.5rem #aaa",
-            borderRadius: "10px",
-          }}
-        >
-          {/* <img src={data.current.conditions.icon} alt='time of day icon'></img> */}
-          <p style={{ padding: "0 5rem" }}>
-            Today's Weather in {data.location.name} is {data.current.cloud}%{" "}
-            {data.current.condition.text}
-          </p>
-          <br></br>
-          <p>
-            The temperature is {data.current.temp_f}f / {data.current.temp_c}c
-          </p>
-          <br></br>
-          <p>
-            {" "}
-            Wind is coming in from {data.current.wind_dir} at{" "}
-            {data.current.wind_mph} mph / {data.current.wind_kph} kph <br />{" "}
-            with gusts of {data.current.gust_mph} mph / {data.current.gust_kph}{" "}
-            kph
-          </p>
-          <p>
-            {" "}
-            Current Precipitation is: {data.current.precip_in} in /{" "}
-            {data.current.precip_mm} mm
-          </p>
-          <p>
-            Humidity is {data.current.humidity}% and the barometric pressure is{" "}
-            {data.current.pressure_mb} mb / {data.current.pressure_in} in
-          </p>
-          <p>
-            It currently feels like {data.current.feelslike_f}f /{" "}
-            {data.current.feelslike_c}c
-          </p>
-          <br></br>
-          <br></br>
-          <p>
-            Visibility is at {data.current.vis_miles} miles /{" "}
-            {data.current.vis_km} Km{" "}
-          </p>
-          <p>UV index: {data.current.uv}</p>
-        </div>
+        <Weather data={data} />{" "}
+      </form>
+      <Astronomy data={astro} />
+      <Forecast data={foreCast} />
+      <Sports data={sports} />
       </div>
+       
+       )}
+    </div>
   );
 }
 
