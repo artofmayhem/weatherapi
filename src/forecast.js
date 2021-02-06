@@ -3,9 +3,9 @@ export default function Forecast(props) {
   console.log("forecast data", data);
 
   
-      
+    return (  
+   { data === undefined ? (<div>Loading....</div>) : (
     <div>
-       if ( data === undefined) ? return <div>loading...</div> : return (
       <h3 style={{ textShadow: "0 0 1rem #aaa" }}>Local Forecast</h3>
       {props.data.forecast.forecastday.map((item, idx) => {
         return (
@@ -54,10 +54,11 @@ export default function Forecast(props) {
                 </tr>
               </thead>
             </table>
-          </div>
-        );
-      })}
-      ) 
+          </div> //Innermost div
+        ); // inner return end
+      })} //map end 
+
     </div> //outermost div
-  ); //return statement
+)} //conditional end
+); //return statement
 } //function block
