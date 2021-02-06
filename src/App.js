@@ -74,7 +74,7 @@ function App() {
       });
   }, []);
 
-if (data  && astro && forecast && sports === undefined) {return <div>Loading your local forecast</div>}
+if (data  && astro && foreCast && sports === undefined) {return <div>Loading your local forecast</div>}
 else {
   return (
     <div
