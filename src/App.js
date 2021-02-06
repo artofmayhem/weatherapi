@@ -7,9 +7,9 @@ import Sports from "./sports.js";
 import "./App.css";
 import "bootstrap/dist/css/bootstrap.css";
 
-const initialFormValues = {
-  city: "Honolulu",
-};
+// const initialFormValues = {
+//   city: "Honolulu",
+// };
 
 function App() {
   const [data, setData] = useState();
