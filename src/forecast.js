@@ -2,10 +2,10 @@ export default function Forecast(props) {
   const data = { props };
   console.log("forecast data", data);
 
-  return (
+  
       
     <div>
-      {/* if ( data === undefined ? <div>loading...</div> : 
+       if ( data === undefined) ? return <div>loading...</div> : return (
       <h3 style={{ textShadow: "0 0 1rem #aaa" }}>Local Forecast</h3>
       {props.data.forecast.forecastday.map((item, idx) => {
         return (
@@ -57,7 +57,7 @@ export default function Forecast(props) {
           </div>
         );
       })}
-      ) */}
+      ) 
     </div> //outermost div
   ); //return statement
 } //function block
