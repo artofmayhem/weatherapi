@@ -9,7 +9,7 @@ export default function Astronomy(props) {
       className="d-flex flex-column justify-content-center"
       style={{ padding: "3rem 0" }}
     >
-      
+       if (data === undefined) ?  <div>loading...</div>: 
         <div>
           <h2 style={{textShadow:'0 0 1rem #aaa'}}>Your local astronomy report</h2>
           <table
