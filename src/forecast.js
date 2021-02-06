@@ -57,7 +57,7 @@ export default function Forecast(props) {
           </div> //Innermost div
         ); // inner return end
       })} //map end 
-*\}
+*/}
     </div> //outermost div
 )} //conditional end
 } //function block
