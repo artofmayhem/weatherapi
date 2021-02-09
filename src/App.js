@@ -254,7 +254,7 @@ function App() {
             </p>
           </div>
         </form>{" "}
-        {/* <Astronomy data={astro} /> <Forecast data={foreCast} />{" "} */}
+        <Astronomy data={astro} /> <Forecast data={foreCast} />{" "}
         <div className="d-flex justify-content-center flex-column">
           <h3
             className="display-4"
@@ -275,7 +275,7 @@ function App() {
             <img src={ironman2} style={{ maxHeight: "20vh" }} alt="suit one" />
           </div>
         </div>
-        {/* <Marvel data={avengers} /> */}
+        <Marvel data={avengers} />
       </div>{" "}
     </div>
   );
