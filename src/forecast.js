@@ -1,11 +1,15 @@
 export default function Forecast(props) {
   const data = { props };
   console.log("forecast data", data);
+
   while (data === undefined) {return (<div>loading...</div>)}
   return (
 
     <div className='d-flex container justify-content-center align-items-center'>
       <h3 style={{ textShadow: "0 0 1rem ##67C7EB" }}>Local Forecast</h3>
+
+
+
       {props.data.forecast.forecastday.map((item, idx) => {
         return (
           
@@ -53,9 +57,16 @@ export default function Forecast(props) {
                 </tr>
               </thead>
             </table>
+<<<<<<< HEAD
           
         );
       })}
+=======
+          </div> //Innermost div
+        ); // inner return end
+      })} //map end 
+
+>>>>>>> e5305d7d1b0adeca9502b2ea0e4fd40d581ba8a4
     </div> //outermost div
-  ); //return statement
+) }//outermost return
 } //function block

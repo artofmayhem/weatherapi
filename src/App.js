@@ -146,9 +146,7 @@ function App() {
       });
   }, []);
 
-  while (data && foreCast && astro && Marvel === undefined) {
-    return <div> Loading Jarvis 2.0 Software... </div>;
-  }
+
 
   return (
     <div
@@ -277,6 +275,7 @@ function App() {
         </div>
         <Marvel data={avengers} />
       </div>{" "}
+
     </div>
   );
 }
