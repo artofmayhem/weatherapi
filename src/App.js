@@ -85,11 +85,11 @@ function App() {
         setGust_mph(res.data.current.gust_mph);
         setGust_kph(res.data.current.gust_kph);
 
-        console.log(
-          "Geolocating.... local information received.... complete",
-          res.data
-        );
-        //console.log(res.data.location.name);
+       // console.log(
+        //   "Geolocating.... local information received.... complete",
+        //   res.data
+        // );
+        console.log("Geolocating.... local information received.... complete", data);
       })
       .catch((error) => {
         console.log(error);

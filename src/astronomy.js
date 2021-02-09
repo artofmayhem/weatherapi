@@ -18,9 +18,6 @@ export default function Astronomy(props) {
         <div className="d-flex flex-column justify-content-center" style={{ padding: "3rem 0" }} >
           <h2 style={{textShadow:'0 0 1rem ##67C7EB', padding: '5rem 0', alignSelf: 'center'}}>Your local astronomy report</h2>
 
-        <div>
-          <h2 style={{textShadow:'0 0 1rem #aaa'}}>Your local astronomy report</h2>
-
           <table
             className="table table-bordered"
             style={{ textAlign: "center", backgroundColor: '#444', opacity: '0.8', color: '#67C7EB', textShadow: '#67C7EB' }}
@@ -46,10 +43,10 @@ export default function Astronomy(props) {
           </table>
         </div>
     </div>
-<<<<<<< HEAD
+
+
   );
         }
-=======
-  )};
->>>>>>> e5305d7d1b0adeca9502b2ea0e4fd40d581ba8a4
+
+
 }
