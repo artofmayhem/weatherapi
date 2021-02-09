@@ -1,45 +1,44 @@
 export default function Forecast(props) {
   const data = { props };
   console.log("forecast data", data);
-
+  while (data === undefined) {return (<div>loading...</div>)}
   return (
-      
-    <div>
-      {/* if ( data === undefined ? <div>loading...</div> : 
-      <h3 style={{ textShadow: "0 0 1rem #aaa" }}>Local Forecast</h3>
+
+    <div className='d-flex container justify-content-center align-items-center'>
+      <h3 style={{ textShadow: "0 0 1rem ##67C7EB" }}>Local Forecast</h3>
       {props.data.forecast.forecastday.map((item, idx) => {
         return (
-          <div key={idx} style={{ backgroundColor: "#444", opacity: "0.8" }}>
-            <table className="table table-bordered text-light">
+          
+            <table className="d-flex flex-column table table-bordered text-light">
               <thead>
-                {item.data.forecast.forecastday[idx].date}
+                {props.data.forecast.forecastday[idx].date}
                 <tr>
                   <th>
                     <img
-                      src={`https:${item.data.forecast.forecastday[idx].day.condition.icon}`}
+                      src={`https:${props.data.forecast.forecastday[idx].day.condition.icon}`}
                       alt="time of day icon"
                     />
                   </th>
                   <th>
                     <p>
-                      {item.data.forecast.forecastday[idx].day.condition.text}
+                      {props.data.forecast.forecastday[idx].day.condition.text}
                     </p>
                   </th>
                   <th>
                     <p>High</p>
-                    <p>{item.data.forecast.forecastday[idx].day.maxtemp_f}f</p>
-                    <p>{item.data.forecast.forecastday[idx].day.maxtemp_c}c</p>
+                    <p>{props.data.forecast.forecastday[idx].day.maxtemp_f}f</p>
+                    <p>{props.data.forecast.forecastday[idx].day.maxtemp_c}c</p>
                   </th>
                   <th>
                     <p>Low</p>
-                    <p>{item.data.forecast.forecastday[idx].day.mintemp_f}f</p>
-                    <p>{item.data.forecast.forecastday[idx].day.mintemp_c}c</p>
+                    <p>{props.data.forecast.forecastday[idx].day.mintemp_f}f</p>
+                    <p>{props.data.forecast.forecastday[idx].day.mintemp_c}c</p>
                   </th>
                   <th>
                     <p>
                       <p>Chance of Rain</p>
                       {
-                        item.data.forecast.forecastday[idx].day
+                        props.data.forecast.forecastday[idx].day
                           .daily_chance_of_rain
                       }
                       %
@@ -48,16 +47,15 @@ export default function Forecast(props) {
                   <th>
                     <p>Humidity</p>
                     <p>
-                      {item.data.forecast.forecastday[idx].day.avghumidity}%
+                      {props.data.forecast.forecastday[idx].day.avghumidity}%
                     </p>
                   </th>
                 </tr>
               </thead>
             </table>
-          </div>
+          
         );
       })}
-      ) */}
     </div> //outermost div
   ); //return statement
 } //function block

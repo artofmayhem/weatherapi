@@ -1,13 +1,15 @@
-.App {
-  text-align: center;
-  background-image: url('https://assets.codepen.io/4996277/275646.jpg');
+.arc-reactor {
+  background-image: url('/src/arcreactor.png');
   background-position: center center;
   background-repeat: no-repeat;
   background-attachment: fixed;
+  background-size: cover;
 }
 
 h1, h2, h3, h4, h5, h6, p {
-  color: white;
+  text-align: match-parent;
+  color: #67C7EB;
+  text-shadow: 0 0 .5rem #67C7EB;
 }
 
 p {
@@ -18,3 +20,17 @@ p {
   height: 100vh
 }
 
+video {
+  position: fixed;
+  right: 0;
+  bottom: 0;
+  min-width: 100%;
+  min-height: 100%;
+  transform: translateX(calc((100% - 100vw) / 2));
+}
+
+body {
+  background-color: black;
+  opacity: 0.9; 
+  text-align: center
+}
