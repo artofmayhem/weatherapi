@@ -12,13 +12,13 @@ import reactortrans from "./reactor-trans.png";
 import "./App.css";
 import "bootstrap/dist/css/bootstrap.css";
 
-// const initialFormValues = {
+//  const initialFormValues = {
 //   city: "Honolulu",
-// };
+//  };
 
 function App() {
   const [data, setData] = useState();
-  const [foreCast, setForecast] = useState();
+  // const [foreCast, setForecast] = useState();
   const [localTime, setTime] = useState();
   const [timeZone, setTimeZone] = useState();
   const [name, setName] = useState();
@@ -54,7 +54,6 @@ function App() {
   const [moonset, setMoonset] = useState();
   const [sunrise, setSunrise] = useState();
   const [sunset, setSunset] = useState();
-  const [isLoading, setIsLoading] =useState(false);
 
   useEffect(() => {
     axios
@@ -98,7 +97,7 @@ function App() {
         // );
         console.log(
           "Geolocating.... local information received.... complete",
-          data
+          res.data
         );
       })
       .catch((error) => {
@@ -117,7 +116,6 @@ function App() {
         "https://api.weatherapi.com/v1/astronomy.json?key=aa1aca8fef9d4c3f9c2123921210502&q=96822"
       )
       .then((res) => {
-       
         setMoon_phase(res.data.astronomy.astro.moon_phase);
         setMoon_illumination(res.data.astronomy.astro.moon_illumination);
         setMoonrise(res.data.astronomy.astro.moonrise);
@@ -130,12 +128,29 @@ function App() {
       .catch((error) => {
         console.log(error);
       });
-  }, []);
+  }, [moon_phase]);
+
+  // useEffect(() => {
+  //   axios
+  //     .get(
+  //       "https://api.weatherapi.com/v1/forecast.json?key=aa1aca8fef9d4c3f9c2123921210502&q=96822&days=5"
+  //     )
+  //     .then((res) => {
+  //       setForecast(res.data);
+  //       console.log(
+  //         "Upcoming local weather foreCast data... received.",
+  //         foreCast
+  //       );
+  //     })
+  //     .catch((error) => {
+  //       console.log(error);
+  //     });
+  // }, []);
 
   useEffect(() => {
     axios
       .get(
-        `https://gateway.marvel.com/v1/public/characters?nameStartsWith=M&limit=50&apikey=${PUBLIC_KEY}`
+        `https://gateway.marvel.com/v1/public/characters?nameStartsWith=C&limit=50&apikey=${PUBLIC_KEY}`
       )
       .then((res) => {
         setAvengers(res.data.data.results);
@@ -145,26 +160,9 @@ function App() {
         );
       })
       .catch((error) => {
-        console.log(error.response.data.message);
-      });
-  }, []);
-
-  useEffect(() => {
-    setIsLoading(true)
-    axios
-      .get(
-        "https://api.weatherapi.com/v1/forecast.json?key=aa1aca8fef9d4c3f9c2123921210502&q=96822&days=5"
-      )
-      .then((res) => {
-        setForecast(res.data.forecast.forecastday);
-        console.log("Upcoming local weather foreCast data... received.", res.data.forecast.forecastday);
-      })
-      .catch((error) => {
         console.log(error);
-      }).then(() => {
-        setIsLoading(false)
-      })
-  }, []);
+      });
+  }, [data]);
 
   return (
     <div
@@ -184,27 +182,28 @@ function App() {
       >
         <form className="d-flex flex-column justify-content-center">
           <div
-            className="d-flex justify-content-center flex-column align-items-center"
+            className="parallax-bg2 d-flex justify-content-center flex-column align-items-center"
             style={{
               padding: "3rem",
               backgroundColor: "black",
-              opacity: 0.8,
+              opacity: 0.95,
             }}
           >
-            <p className="display-2" style={{ textAlign: "center" }}>
+            <p className="display-2" style={{ textAlign: "center", color: 'white'}}>
               {" "}
               Hello, Mr.Stark...{" "}
             </p>{" "}
-            <h5 style={{ textAlign: "center" }}>
+            <h5 style={{ textAlign: "center", color: 'white' }}>
               {" "}
               Welcome to Jarvis 2.0 <br></br>Your Personal Data Assistant{" "}
             </h5>{" "}
-            <h5> How are you today ? </h5>{" "}
+            <h5 style={{color: 'white'}}> How are you today ? </h5>{" "}
             <h5
               style={{
                 paddingTop: "3rem",
                 textAlign: "center",
                 lineHeight: "1.78rem",
+                color: 'white'
               }}
             >
               Your current date and time is {localTime} in the {timeZone}{" "}
@@ -213,13 +212,13 @@ function App() {
             <div className="shadow">
               {" "}
               <div className="d-flex justify-content-center">
-                <p>
+                <p style={{color: 'white'}}>
                   {" "}
                   {name}, {region}, {country}{" "}
                 </p>{" "}
               </div>{" "}
               <div className="d-flex justify-content-center">
-                <p>
+                <p style={{color: 'white'}}>
                   {" "}
                   {longitude} longitude {latitude} latitude{" "}
                 </p>{" "}
@@ -277,55 +276,90 @@ function App() {
         {/* <Astronomy data={astro} /> <Forecast data={foreCast} />{" "} */}
         <div className="d-flex flex-column justify-content-center">
           <div
-            className="d-flex flex-column justify-content-center"
-            style={{ padding: "3rem 0" }}
+            className="d-flex flex-column container justify-content-center"
+            style={{ padding: "3rem 0", maxWidth: "50%" }}
           >
             <h2
               style={{
                 textShadow: "0 0 1rem ##67C7EB",
                 padding: "5rem 0",
                 alignSelf: "center",
+                textAlign: "center",
               }}
             >
               Your local astronomy report
             </h2>
 
             <table
-              className="table table-bordered"
+              className="table table-bordered d-flex justify-content-center parallax-bg"
               style={{
                 textAlign: "center",
-                backgroundColor: "#444",
-                opacity: "0.8",
-                color: "#67C7EB",
+               
+                opacity: "1",
+                color: "white",
                 textShadow: "#67C7EB",
+                maxWidth: "100%",
+                alignSelf: "center",
               }}
             >
-              <tbody>
-                <tr>
-                  <th style={{ maxWidth: "10%" }}>Moon Phase</th>
-                  <th>Moon Illumination</th>
-                  <th>Moonrise</th>
-                  <th>Moonset</th>
-                  <th>Sunrise</th>
-                  <th>Sunset</th>
+              <tbody
+                className="d-flex flex-column"
+                style={{
+                  maxWidth: "90%",
+                  padding: '3rem 0',
+                  opacity: 0.8,
+                }}
+              >
+                <tr
+                  className="d-flex flex-column"
+                  style={{ margin: "2vh", padding: '3rem 5rem', boxShadow: "0 0 1rem #67C7EB" }}
+                >
+                  Moon Phase{moon_phase}
                 </tr>
-                <tr>
-                  <th style={{ maxWidth: "10%" }}>{moon_phase}</th>
-                  <th>{moon_illumination}%</th>
-                  <th>{moonrise}</th>
-                  <th>{moonset}</th>
-                  <th>{sunrise}</th>
-                  <th>{sunset}</th>
+                <tr
+                  className="d-flex flex-column"
+                  style={{ margin: "2vh", padding: '3rem 5rem', boxShadow: "0 0 1rem #67C7EB" }}
+                >
+                  Moon Illumination {moon_illumination}%
                 </tr>
+                <tr
+                  className="d-flex flex-column"
+                  style={{ margin: "2vh", padding: '3rem 5rem', boxShadow: "0 0 1rem #67C7EB" }}
+                >
+                  Moonrise
+                  {moonrise}
+                </tr>
+                <tr
+                  className="d-flex flex-column"
+                  style={{ margin: "2vh", padding: '3rem 5rem', boxShadow: "0 0 1rem #67C7EB" }}
+                >
+                  Moonset
+                  {moonset}
+                </tr>
+                <tr
+                  className="d-flex flex-column"
+                  style={{ margin: "2vh", padding: '3rem 5rem', boxShadow: "0 0 1rem #67C7EB" }}
+                >
+                  Sunrise
+                  {sunrise}
+                </tr>
+                <tr
+                  className="d-flex flex-column"
+                  style={{ margin: "2vh", padding: '3rem 5rem', boxShadow: "0 0 1rem #67C7EB" }}
+                >
+                  Sunset
+                 {sunset}
+                </tr>
+
               </tbody>
             </table>
+            <p style={{ alignSelf: "center", padding: '3rem 0', textAlign: "center" }}>
+              Mark II Prototype... <br></br>
+              <br></br>Ready and Online
+            </p>
           </div>
         </div>
-    
-    
-{/* { (isLoading) ? console.log('loading') : (
-
-    <div className='d-flex container justify-content-center align-items-center'>
+        {/* <div className='d-flex container justify-content-center align-items-center'>
 
       <h3 style={{ textShadow: "0 0 1rem ##67C7EB" }}>Local Forecast</h3> 
 
@@ -381,9 +415,7 @@ function App() {
         );
       })} 
 
-    </div>  
-)} */}
-
+    </div>   */}
         <div className="d-flex justify-content-center flex-column">
           <h3
             className="display-4"
@@ -405,11 +437,27 @@ function App() {
             }}
           ></img>
           <div
-            className="d-flex justify-content-around flex-row"
+            className="d-flex justify-content-center flex-column"
             style={{ padding: "5rem 0" }}
           >
-            <img src={ironman1} style={{ maxHeight: "20vh" }} alt="suit one" />
-            <img src={ironman2} style={{ maxHeight: "20vh" }} alt="suit one" />
+            <img
+              src={ironman1}
+              style={{
+                maxWidth: "80vw",
+                margin: "2rem 0",
+                alignSelf: "center",
+              }}
+              alt="suit one"
+            />
+            <img
+              src={ironman2}
+              style={{
+                maxWidth: "80vw",
+                margin: "3rem 0",
+                alignSelf: "center",
+              }}
+              alt="suit one"
+            />
           </div>
         </div>
         {/* <Marvel data={avengers} /> */}
@@ -425,12 +473,18 @@ function App() {
           >
             Enhanced Entities Database
           </h3>{" "}
+          <input
+            type="text"
+            placeholder="input search title..."
+            style={{ width: "15rem", alignSelf: "center", backgroundColor: '#444', color: 'lightblue' }}
+          />
+          <button className='btn btn-three' style={{ width: "15rem", alignSelf: "center" }}>dataFetch</button>
           <div className="d-flex flex-wrap justify-content-center">
             {avengers.map((item, idx) => {
               return (
                 <div
                   key={idx}
-                  className=" arc-reactor d-flex flex-column container justify-content-center align-items-center"
+                  className=" arc-reactor d-flex flex-column container justify-content-center align-items-lg-center "
                   style={{
                     width: "25%",
                     padding: "5rem",
@@ -439,12 +493,24 @@ function App() {
                     margin: "4%",
                   }}
                 >
-                  <h2 style={{ textAlign: "center" }}>{avengers[idx].name}</h2>
+                  <h2
+                    style={{
+                      alignSelf: "center",
+                      textAlign: "center",
+                      color: "white",
+                      textShadow: "0 0 1.5rem lime",
+                    }}
+                  >
+                    {avengers[idx].name}
+                  </h2>
                   <img
                     src={`${avengers[idx].thumbnail.path}.${avengers[idx].thumbnail.extension}`}
                     style={{ width: "20vw", alignSelf: "center" }}
                     alt={idx}
                   ></img>
+                  {/* {avengers.urls.map((item, id) => {
+                   item.map((i, index) => (return (<p> {i[index].url}</p>))
+                  })} */}
                 </div>
               );
             })}{" "}
