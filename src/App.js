@@ -26,7 +26,6 @@ function App() {
   const [country, setCountry] = useState();
   const [longitude, setLongitude] = useState();
   const [latitude, setLatitude] = useState();
-
   const [icon, setIcon] = useState();
   const [name2, setname2] = useState();
   const [cloud, setCloud] = useState();
@@ -90,11 +89,6 @@ function App() {
         setWind_kph(res.data.current.wind_kph);
         setGust_mph(res.data.current.gust_mph);
         setGust_kph(res.data.current.gust_kph);
-
-        // console.log(
-        //   "Geolocating.... local information received.... complete",
-        //   res.data
-        // );
         console.log(
           "Geolocating.... local information received.... complete",
           res.data
@@ -294,7 +288,6 @@ function App() {
               className="table table-bordered d-flex justify-content-center parallax-bg"
               style={{
                 textAlign: "center",
-               
                 opacity: "1",
                 color: "white",
                 textShadow: "#67C7EB",
@@ -314,41 +307,43 @@ function App() {
                   className="d-flex flex-column"
                   style={{ margin: "2vh", padding: '3rem 5rem', boxShadow: "0 0 1rem #67C7EB" }}
                 >
-                  Moon Phase{moon_phase}
+                 <td> Moon Phase</td>
+                 <td>{moon_phase}</td>
                 </tr>
                 <tr
                   className="d-flex flex-column"
                   style={{ margin: "2vh", padding: '3rem 5rem', boxShadow: "0 0 1rem #67C7EB" }}
                 >
-                  Moon Illumination {moon_illumination}%
+                 <td> Moon Illumination</td>
+                 <td>{moon_illumination}%</td>
                 </tr>
                 <tr
                   className="d-flex flex-column"
                   style={{ margin: "2vh", padding: '3rem 5rem', boxShadow: "0 0 1rem #67C7EB" }}
                 >
-                  Moonrise
-                  {moonrise}
+                 <td> Moonrise</td>
+                 <td>{moonrise}</td>
                 </tr>
                 <tr
                   className="d-flex flex-column"
                   style={{ margin: "2vh", padding: '3rem 5rem', boxShadow: "0 0 1rem #67C7EB" }}
                 >
-                  Moonset
-                  {moonset}
+                 <td> Moonset</td>
+                 <td>{moonset}</td>
                 </tr>
                 <tr
                   className="d-flex flex-column"
                   style={{ margin: "2vh", padding: '3rem 5rem', boxShadow: "0 0 1rem #67C7EB" }}
                 >
-                  Sunrise
-                  {sunrise}
+                 <td> Sunrise</td>
+                 <td>{sunrise}</td>
                 </tr>
                 <tr
                   className="d-flex flex-column"
                   style={{ margin: "2vh", padding: '3rem 5rem', boxShadow: "0 0 1rem #67C7EB" }}
                 >
-                  Sunset
-                 {sunset}
+                 <td> Sunset</td>
+                 <td>{sunset}</td>
                 </tr>
 
               </tbody>
