@@ -122,7 +122,7 @@ function App() {
       .catch((error) => {
         console.log(error);
       });
-  }, [moon_phase]);
+  }, []);
 
   // useEffect(() => {
   //   axios
@@ -156,7 +156,7 @@ function App() {
       .catch((error) => {
         console.log(error);
       });
-  }, [data]);
+  }, []);
 
   return (
     <div
