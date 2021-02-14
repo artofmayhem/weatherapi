@@ -4,7 +4,7 @@ import axios from "axios";
 // import Astronomy from "./astronomy.js";
 // import Forecast from "./forecast.js";
 // import Marvel from "./Marvel";
-import stark from "./stark.png";
+// import stark from "./starklogo.png";
 import ironman1 from "./ironman1.png";
 import ironman2 from "./ironman2.jpg";
 import reactortrans from "./reactor-trans.png";
@@ -271,7 +271,7 @@ function App() {
         <div className="d-flex flex-column justify-content-center">
           <div
             className="d-flex flex-column container justify-content-center"
-            style={{ padding: "3rem 0", maxWidth: "50%" }}
+            style={{ padding: "1rem 0", maxWidth: "60%" }}
           >
             <h2
               style={{
@@ -298,49 +298,49 @@ function App() {
               <tbody
                 className="d-flex flex-column"
                 style={{
-                  maxWidth: "90%",
+                  maxWidth: "100%",
                   padding: '3rem 0',
                   opacity: 0.8,
                 }}
               >
                 <tr
                   className="d-flex flex-column"
-                  style={{ margin: "2vh", padding: '3rem 5rem', boxShadow: "0 0 1rem #67C7EB" }}
+                  style={{ margin: "2vh", padding: '3rem 1rem', boxShadow: "0 0 1rem #67C7EB" }}
                 >
                  <td> Moon Phase</td>
                  <td>{moon_phase}</td>
                 </tr>
                 <tr
                   className="d-flex flex-column"
-                  style={{ margin: "2vh", padding: '3rem 5rem', boxShadow: "0 0 1rem #67C7EB" }}
+                  style={{ margin: "2vh", padding: '3rem 1rem', boxShadow: "0 0 1rem #67C7EB" }}
                 >
                  <td> Moon Illumination</td>
                  <td>{moon_illumination}%</td>
                 </tr>
                 <tr
                   className="d-flex flex-column"
-                  style={{ margin: "2vh", padding: '3rem 5rem', boxShadow: "0 0 1rem #67C7EB" }}
+                  style={{ margin: "2vh", padding: '3rem 1rem', boxShadow: "0 0 1rem #67C7EB" }}
                 >
                  <td> Moonrise</td>
                  <td>{moonrise}</td>
                 </tr>
                 <tr
                   className="d-flex flex-column"
-                  style={{ margin: "2vh", padding: '3rem 5rem', boxShadow: "0 0 1rem #67C7EB" }}
+                  style={{ margin: "2vh", padding: '3rem 1rem', boxShadow: "0 0 1rem #67C7EB" }}
                 >
                  <td> Moonset</td>
                  <td>{moonset}</td>
                 </tr>
                 <tr
                   className="d-flex flex-column"
-                  style={{ margin: "2vh", padding: '3rem 5rem', boxShadow: "0 0 1rem #67C7EB" }}
+                  style={{ margin: "2vh", padding: '3rem 1rem', boxShadow: "0 0 1rem #67C7EB" }}
                 >
                  <td> Sunrise</td>
                  <td>{sunrise}</td>
                 </tr>
                 <tr
                   className="d-flex flex-column"
-                  style={{ margin: "2vh", padding: '3rem 5rem', boxShadow: "0 0 1rem #67C7EB" }}
+                  style={{ margin: "2vh", padding: '3rem 1rem', boxShadow: "0 0 1rem #67C7EB" }}
                 >
                  <td> Sunset</td>
                  <td>{sunset}</td>
@@ -510,16 +510,10 @@ function App() {
               );
             })}{" "}
           </div>
-          <div className="d-flex justify-content-center">
-            <img
-              src={stark}
-              alt="stark logo"
-              style={{ maxWidth: "30%", alignSelf: "center", opacity: "0.8" }}
-            ></img>
-          </div>
+          
         </div>
       </div>{" "}
-    </div>
+      </div>
   );
 }
 
