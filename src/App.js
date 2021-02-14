@@ -228,7 +228,7 @@ function App() {
               textAlign: "center",
             }}
           >
-            <img src={`https:${icon}`} alt="time of day icon"></img>
+            <img style={{marginTop: '2rem'}}src={`https:${icon}`} alt="time of day icon"></img>
             <p style={{ padding: "0 5rem" }}>
               Today's cloud coverage in {name2} is {cloud}% and {text}
             </p>
@@ -261,7 +261,7 @@ function App() {
             <p>UV index: {uv}</p>
             <p style={{ paddingTop: "3rem" }}>
               Powered by{" "}
-              <a href="https://www.weatherapi.com/" title="Free Weather API">
+              <a href="https://www.weatherapi.com/" style={{marginBottom: '2rem'}} title="Free Weather API">
                 WeatherAPI.com
               </a>
             </p>
