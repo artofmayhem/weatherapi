@@ -53,6 +53,7 @@ function App() {
   const [moonset, setMoonset] = useState();
   const [sunrise, setSunrise] = useState();
   const [sunset, setSunset] = useState();
+  const [searchValue, setSearchValue] = useState('');
 
   useEffect(() => {
     axios
@@ -144,7 +145,7 @@ function App() {
   useEffect(() => {
     axios
       .get(
-        `https://gateway.marvel.com/v1/public/characters?nameStartsWith=C&limit=50&apikey=${PUBLIC_KEY}`
+        `https://gateway.marvel.com/v1/public/characters?nameStartsWith=c&limit=50&apikey=${PUBLIC_KEY}`
       )
       .then((res) => {
         setAvengers(res.data.data.results);
@@ -157,6 +158,24 @@ function App() {
         console.log(error);
       });
   }, []);
+
+  const handleDataFetch = () => {
+    axios
+      .get(
+        `https://gateway.marvel.com/v1/public/characters?nameStartsWith=${searchValue}&limit=50&apikey=${PUBLIC_KEY}`
+      )
+      .then((res) => {
+        setAvengers(res.data.data.results);
+        console.log(
+          "Initial Avengers Data requisition... Commencing... Complete, Mr. Stark",
+          res.data.data.results
+        );
+        setSearchValue('');
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
 
   return (
     <div
@@ -472,8 +491,10 @@ function App() {
             type="text"
             placeholder="input search title..."
             style={{ width: "15rem", alignSelf: "center", backgroundColor: '#444', color: 'lightblue' }}
+            value={searchValue}
+            onChange={(e) => setSearchValue(e.target.value)}
           />
-          <button className='btn btn-three' style={{ width: "15rem", alignSelf: "center" }}>dataFetch</button>
+          <button className='btn btn-three' style={{ width: "15rem", alignSelf: "center" }} onClick={handleDataFetch}>dataFetch</button>
           <div className="d-flex flex-wrap justify-content-center">
             {avengers.map((item, idx) => {
               return (
