@@ -12,6 +12,10 @@ import "bootstrap/dist/css/bootstrap.css";
   city: "",
  };
 
+ const initialSearchValue = {
+   value: "a",
+ }
+
 function App() {
 
   const [localTime, setTime] = useState();
@@ -48,7 +52,7 @@ function App() {
   const [moonset, setMoonset] = useState();
   const [sunrise, setSunrise] = useState();
   const [sunset, setSunset] = useState();
-  const [searchValue, setSearchValue] = useState('');
+  const [searchValue, setSearchValue] = useState(initialSearchValue.value);
   const [locationValue, setLocationValue] = useState(initialFormValues.city);
 
   useEffect(() => {
@@ -163,7 +167,7 @@ function App() {
           marginTop: "5rem",
         }}
       >
-        <form className="d-flex flex-column justify-content-center">
+        <form className="d-flex flex-column justify-content-center" >
           <div
             className="parallax-bg2 d-flex justify-content-center flex-column align-items-center"
             style={{
@@ -172,6 +176,7 @@ function App() {
               opacity: 0.95,
             }}
           >
+            <div className='d-flex justify-content-center flex-column' style={{backgroundColor: 'black', textAlign: 'center'}}>
             <p className="display-2" style={{ textAlign: "center", color: 'white'}}>
               {" "}
               Hello, Mr.Stark...{" "}
@@ -181,13 +186,13 @@ function App() {
               Welcome to Jarvis 2.0 <br></br>Your Personal Data Assistant{" "}
             </h5>{" "}
             <h5 style={{color: 'white'}}> How are you today ? </h5>{" "}
-            <h4 style={{textAlign: 'center', color: 'white'}}>I see you have an upcoming trip sir... Please enter your destination below.</h4> 
+            <h4 style={{textAlign: 'center', color: 'white', padding: '2rem 2rem'}}>I see you have an upcoming trip sir... Please enter your destination below.</h4> 
             <input
             type="text"
             placeholder="Input any location value"
-            style={{ width: "15rem", alignSelf: "center", backgroundColor: '#444', color: 'lightblue', marginTop: '1.5rem' }}
+            style={{ width: "20rem", alignSelf: "center", backgroundColor: '#444', color: 'lightblue', textAlign: 'center', fontSize: '1.25rem' }}
             value={locationValue}
-            onChange={(e) => setLocationValue(e.target.value)}
+            onChange={(e) => setLocationValue(e.target.value.toUpperCase())}
           />
         
             <h5
@@ -198,7 +203,7 @@ function App() {
                 color: 'white'
               }}
             >
-              The current date and time of your destination is {localTime} in the {timeZone}{" "}
+              The current date and time of your destination is: <br></br> {localTime} in the {timeZone}{" "}
               timezone{" "}
             </h5>{" "}
             <div className="shadow">
@@ -210,14 +215,14 @@ function App() {
                 </p>{" "}
               </div>{" "}
               <div className="d-flex justify-content-center">
-                <p style={{color: 'white'}}>
+                <p style={{color: 'white', padding: '2rem'}}>
                   {" "}
                   {longitude} longitude {latitude} latitude{" "}
                 </p>{" "}
               </div>{" "}
             </div>{" "}
           </div>{" "}
-
+        </div>      
 
 
 
@@ -429,12 +434,12 @@ function App() {
           </h3>{" "}
           <input
             type="text"
-            placeholder="input search title..."
-            style={{ width: "15rem", alignSelf: "center", backgroundColor: '#444', color: 'lightblue' }}
+            placeholder="input any search value"
+            style={{ width: "20rem", marginBottom: '3rem', alignSelf: "center", backgroundColor: '#444', color: 'lightblue', fontSize: '2rem', textAlign: 'center' }}
             value={searchValue}
-            onChange={(e) => setSearchValue(e.target.value)}
+            onChange={(e) => setSearchValue(e.target.value.toUpperCase())}
           />
-         
+          
           <div className="d-flex flex-wrap justify-content-center">
             {avengers.map((item, idx) => {
               return (
@@ -464,7 +469,6 @@ function App() {
                     style={{ width: "20vw", alignSelf: "center" }}
                     alt={idx}
                   ></img>
-                 {/* <Comics avengers={avengers} /> */}
                 </div>
               );
             })}{" "}
