@@ -1,10 +1,6 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 
-// import Astronomy from "./astronomy.js";
-// import Forecast from "./forecast.js";
-// import Marvel from "./Marvel";
-// import stark from "./starklogo.png";
 import ironman1 from "./ironman1.png";
 import ironman2 from "./ironman2.jpg";
 import reactortrans from "./reactor-trans.png";
@@ -12,13 +8,12 @@ import reactortrans from "./reactor-trans.png";
 import "./App.css";
 import "bootstrap/dist/css/bootstrap.css";
 
-//  const initialFormValues = {
-//   city: "Honolulu",
-//  };
+ const initialFormValues = {
+  city: "",
+ };
 
 function App() {
-  const [data, setData] = useState();
-  // const [foreCast, setForecast] = useState();
+
   const [localTime, setTime] = useState();
   const [timeZone, setTimeZone] = useState();
   const [name, setName] = useState();
@@ -54,14 +49,15 @@ function App() {
   const [sunrise, setSunrise] = useState();
   const [sunset, setSunset] = useState();
   const [searchValue, setSearchValue] = useState('');
+  const [locationValue, setLocationValue] = useState(initialFormValues.city);
 
   useEffect(() => {
     axios
       .get(
-        "https://api.weatherapi.com/v1/current.json?key=aa1aca8fef9d4c3f9c2123921210502&q=96822"
+        `https://api.weatherapi.com/v1/current.json?key=aa1aca8fef9d4c3f9c2123921210502&q=${locationValue}`
       )
       .then((res) => {
-        setData(res.data);
+    
         setTime(res.data.location.localtime);
         setTimeZone(res.data.location.tz_id);
         setName(res.data.location.name);
@@ -98,7 +94,7 @@ function App() {
       .catch((error) => {
         console.log(error);
       });
-  }, []);
+  }, [locationValue]);
 
   const PUBLIC_KEY = "e2413ca828a65e2cb80fba818d0052b7"; // your public key
   //const PRIVATE_KEY = "398de4eb8a05e988e0b39750de9e3098245b1e0c"; // your private key
@@ -108,7 +104,7 @@ function App() {
   useEffect(() => {
     axios
       .get(
-        "https://api.weatherapi.com/v1/astronomy.json?key=aa1aca8fef9d4c3f9c2123921210502&q=96822"
+        `https://api.weatherapi.com/v1/astronomy.json?key=aa1aca8fef9d4c3f9c2123921210502&q=${locationValue}`
       )
       .then((res) => {
         setMoon_phase(res.data.astronomy.astro.moon_phase);
@@ -123,24 +119,22 @@ function App() {
       .catch((error) => {
         console.log(error);
       });
-  }, []);
+  }, [locationValue]);
 
-  // useEffect(() => {
-  //   axios
-  //     .get(
-  //       "https://api.weatherapi.com/v1/forecast.json?key=aa1aca8fef9d4c3f9c2123921210502&q=96822&days=5"
-  //     )
-  //     .then((res) => {
-  //       setForecast(res.data);
-  //       console.log(
-  //         "Upcoming local weather foreCast data... received.",
-  //         foreCast
-  //       );
-  //     })
-  //     .catch((error) => {
-  //       console.log(error);
-  //     });
-  // }, []);
+ 
+  const handleLocationFetch = e => {
+    e.preventDefault();
+      setLocationValue(e.target.value)
+      };
+
+    
+
+
+
+
+  
+
+ 
 
   useEffect(() => {
     axios
@@ -177,6 +171,7 @@ function App() {
       });
   };
 
+ 
   return (
     <div
       className="d-flex flex-column justify-content-center"
@@ -187,6 +182,11 @@ function App() {
         minWidth: "100%",
       }}
     >
+
+
+
+
+
       <div
         className="d-flex flex-column justify-content-center "
         style={{
@@ -211,6 +211,15 @@ function App() {
               Welcome to Jarvis 2.0 <br></br>Your Personal Data Assistant{" "}
             </h5>{" "}
             <h5 style={{color: 'white'}}> How are you today ? </h5>{" "}
+            <h4 style={{textAlign: 'center', color: 'white'}}>I see you have an upcoming trip sir... Please enter your destination below.</h4> 
+            <input
+            type="text"
+            placeholder="Input any location value"
+            style={{ width: "15rem", alignSelf: "center", backgroundColor: '#444', color: 'lightblue', marginTop: '1.5rem' }}
+            value={locationValue}
+            onChange={(e) => setLocationValue(e.target.value)}
+          />
+          <button className='btn btn-three' style={{ width: "15rem", alignSelf: "center", color: 'lightblue', backgroundColor: '#444'}} onClick={handleLocationFetch}>Execute Location Fetch</button>
             <h5
               style={{
                 paddingTop: "3rem",
@@ -219,7 +228,7 @@ function App() {
                 color: 'white'
               }}
             >
-              Your current date and time is {localTime} in the {timeZone}{" "}
+              The current date and time of your destination is {localTime} in the {timeZone}{" "}
               timezone{" "}
             </h5>{" "}
             <div className="shadow">
@@ -238,6 +247,11 @@ function App() {
               </div>{" "}
             </div>{" "}
           </div>{" "}
+
+
+
+
+
           <div
             className="d-flex justify-content-center flex-column align-items-center"
             style={{
@@ -286,7 +300,10 @@ function App() {
             </p>
           </div>
         </form>{" "}
-        {/* <Astronomy data={astro} /> <Forecast data={foreCast} />{" "} */}
+       
+
+
+
         <div className="d-flex flex-column justify-content-center">
           <div
             className="d-flex flex-column container justify-content-center"
@@ -373,63 +390,11 @@ function App() {
             </p>
           </div>
         </div>
-        {/* <div className='d-flex container justify-content-center align-items-center'>
 
-      <h3 style={{ textShadow: "0 0 1rem ##67C7EB" }}>Local Forecast</h3> 
 
-         {foreCast.map((item, idx) => {
-        return (
-          
-            <table className="d-flex flex-column table table-bordered text-light">
-              <thead>
-                {foreCast[idx].date}
-                <tr>
-                  <th>
-                    <img
-                      src={`https:${foreCast[idx].day.condition.icon}`}
-                      alt="time of day icon"
-                    />
-                  </th>
-                  <th>
-                    <p>
-                      {foreCast[idx].day.condition.text}
-                    </p>
-                  </th>
-                  <th>
-                    <p>High</p>
-                    <p>{foreCast[idx].day.maxtemp_f}f</p>
-                    <p>{foreCast[idx].day.maxtemp_c}c</p>
-                  </th>
-                  <th>
-                    <p>Low</p>
-                    <p>{foreCast[idx].day.mintemp_f}f</p>
-                    <p>{foreCast[idx].day.mintemp_c}c</p>
-                  </th>
-                  <th>
-                    <p>
-                      <p>Chance of Rain</p>
-                      {
-                        foreCast[idx].day
-                          .daily_chance_of_rain
-                      }
-                      %
-                    </p>
-                  </th>
-                  <th>
-                    <p>Humidity</p>
-                    <p>
-                      {foreCast[idx].day.avghumidity}%
-                    </p>
-                  </th>
-                </tr>
-              </thead>
-            </table>
 
-          
-        );
-      })} 
 
-    </div>   */}
+
         <div className="d-flex justify-content-center flex-column">
           <h3
             className="display-4"
@@ -474,7 +439,12 @@ function App() {
             />
           </div>
         </div>
-        {/* <Marvel data={avengers} /> */}
+     
+     
+
+
+
+
         <div className="d-flex flex-column" style={{ flexDirection: "wrap" }}>
           <h3
             className="display-4"
@@ -524,9 +494,7 @@ function App() {
                     style={{ width: "20vw", alignSelf: "center" }}
                     alt={idx}
                   ></img>
-                  {/* {avengers.urls.map((item, id) => {
-                   item.map((i, index) => (return (<p> {i[index].url}</p>))
-                  })} */}
+                 {/* <Comics avengers={avengers} /> */}
                 </div>
               );
             })}{" "}
