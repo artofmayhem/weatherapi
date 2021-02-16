@@ -186,7 +186,7 @@ function App() {
               Welcome to Jarvis 2.0 <br></br>Your Personal Data Assistant{" "}
             </h5>{" "}
             <h5 style={{color: 'white'}}> How are you today ? </h5>{" "}
-            <h4 style={{textAlign: 'center', color: 'white', padding: '2rem 2rem'}}>I see you have an upcoming trip sir... Please enter your destination below.</h4> 
+            <h4 style={{textAlign: 'center', color: 'white', padding: '2rem 2rem'}}>I see you have an upcoming trip sir... <br></br>Please enter your destination below.</h4> 
             <input
             type="text"
             placeholder="Input any location value"
