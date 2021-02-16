@@ -121,39 +121,7 @@ function App() {
       });
   }, [locationValue]);
 
- 
-  const handleLocationFetch = e => {
-    e.preventDefault();
-      setLocationValue(e.target.value)
-      };
-
-    
-
-
-
-
-  
-
- 
-
   useEffect(() => {
-    axios
-      .get(
-        `https://gateway.marvel.com/v1/public/characters?nameStartsWith=c&limit=50&apikey=${PUBLIC_KEY}`
-      )
-      .then((res) => {
-        setAvengers(res.data.data.results);
-        console.log(
-          "Initial Avengers Data requisition... Commencing... Complete, Mr. Stark",
-          res.data.data.results
-        );
-      })
-      .catch((error) => {
-        console.log(error);
-      });
-  }, []);
-
-  const handleDataFetch = () => {
     axios
       .get(
         `https://gateway.marvel.com/v1/public/characters?nameStartsWith=${searchValue}&limit=50&apikey=${PUBLIC_KEY}`
@@ -164,12 +132,14 @@ function App() {
           "Initial Avengers Data requisition... Commencing... Complete, Mr. Stark",
           res.data.data.results
         );
-        setSearchValue('');
       })
       .catch((error) => {
         console.log(error);
       });
-  };
+  }, [searchValue]);
+
+
+
 
  
   return (
@@ -219,7 +189,7 @@ function App() {
             value={locationValue}
             onChange={(e) => setLocationValue(e.target.value)}
           />
-          <button className='btn btn-three' style={{ width: "15rem", alignSelf: "center", color: 'lightblue', backgroundColor: '#444'}} onClick={handleLocationFetch}>Execute Location Fetch</button>
+        
             <h5
               style={{
                 paddingTop: "3rem",
@@ -464,7 +434,7 @@ function App() {
             value={searchValue}
             onChange={(e) => setSearchValue(e.target.value)}
           />
-          <button className='btn btn-three' style={{ width: "15rem", alignSelf: "center" }} onClick={handleDataFetch}>dataFetch</button>
+         
           <div className="d-flex flex-wrap justify-content-center">
             {avengers.map((item, idx) => {
               return (
