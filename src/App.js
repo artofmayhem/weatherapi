@@ -13,7 +13,7 @@ import "bootstrap/dist/css/bootstrap.css";
  };
 
  const initialSearchValue = {
-   value: "a",
+   value: "",
  }
 
 function App() {
