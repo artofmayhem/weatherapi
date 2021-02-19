@@ -7,13 +7,14 @@
 }
 
 .parallax-bg {
-  background-image: url('/src/mark.jpeg');
+  background-image: url('/src/labshot.jpg');
   background-position: center center;
   background-repeat: no-repeat;
   background-attachment: fixed;
-  background-size: 60%;
+  background-size: 100%;
   background-color: #67C7EB;
   background-size: cover;
+  
   
 }
 

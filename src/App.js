@@ -177,7 +177,7 @@ function App() {
             }}
           >
             <div className='d-flex justify-content-center flex-column' style={{backgroundColor: 'black', textAlign: 'center'}}>
-            <p className="display-2" style={{ textAlign: "center", color: 'white'}}>
+            <p className="display-4" style={{ textAlign: "center", margin: '3rem 2rem', color: 'white'}}>
               {" "}
               Hello, Mr.Stark...{" "}
             </p>{" "}
@@ -197,7 +197,7 @@ function App() {
         
             <h5
               style={{
-                paddingTop: "3rem",
+                margin: "3rem 2rem",
                 textAlign: "center",
                 lineHeight: "1.78rem",
                 color: 'white'
@@ -282,7 +282,7 @@ function App() {
         <div className="d-flex flex-column justify-content-center">
           <div
             className="d-flex flex-column container justify-content-center"
-            style={{ padding: "1rem 0", maxWidth: "60%" }}
+            style={{ padding: "1rem 0", maxWidth: "80vw" }}
           >
             <h2
               style={{
@@ -304,6 +304,9 @@ function App() {
                 textShadow: "#67C7EB",
                 maxWidth: "100%",
                 alignSelf: "center",
+                
+                backgroundColor: '#444',
+                
               }}
             >
               <tbody
@@ -311,7 +314,8 @@ function App() {
                 style={{
                   maxWidth: "100%",
                   padding: '3rem 0',
-                  opacity: 0.8,
+                  opacity: '0.95',
+                  backgroundColor: 'black'
                 }}
               >
                 <tr
