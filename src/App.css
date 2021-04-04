@@ -1,5 +1,5 @@
 .arc-reactor {
-  background-image: url('/src/jarvis.jpg');
+  background-image: url('/src/assets/jarvis.jpg');
   background-position: center center;
   background-repeat: no-repeat;
   background-attachment: fixed;
@@ -7,7 +7,7 @@
 }
 
 .parallax-bg {
-  background-image: url('/src/labshot.jpg');
+  background-image: url('/src/assets/labshot.jpg');
   background-position: center center;
   background-repeat: no-repeat;
   background-attachment: fixed;
@@ -19,7 +19,7 @@
 }
 
 .parallax-bg2 {
-  background-image: url('/src/lab.jpg');
+  background-image: url('/src/assets/lab.jpg');
   background-position: center center;
   background-repeat: no-repeat;
   background-attachment: fixed;
