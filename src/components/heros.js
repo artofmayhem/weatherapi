@@ -6,19 +6,18 @@ export const Comics = (props) => {
 
   return (
     <div
-      className="d-flex flex-column justify-content-center align-items-stretch"
+      className="d-flex flex-column flew-wrap justify-content-center align-items-stretch"
       style={{
         backgroundColor: "#222",
         textAlign: "center",
-        padding: "5vh 10%",
-        minWidth: "20vw",
+        padding: "5vh 25vw",
+        
         alignSelf: "center",
-        textAlign: "center",
       }}
     >
       <h3
         className="display-4"
-        style={{ fontSize: "2rem", marginBottom: "3vh" }}
+        style={{ fontSize: "2rem", marginBottom: "3vh", padding: '5vh 0vw' }}
       >
         Verified Appearances
       </h3>
@@ -41,7 +40,7 @@ export default function Heros(props) {
   console.log("Props from Films function heros.js", avengers);
 
   return (
-    <div className="d-flex flex-wrap justify-content-center">
+    <div className="d-flex flex-wrap justify-content-center" style={{width: '100vw', alignSelf: 'center'}}>
       {avengers &&
         avengers.map((item, idx) => {
           return (
@@ -49,10 +48,11 @@ export default function Heros(props) {
               key={idx}
               className=" arc-reactor d-flex flex-column container justify-content-start align-items-lg-center "
               style={{
-                width: "25%",
+                width: "100vw",
                 padding: "5rem",
                 border: ".1rem solid #444",
                 borderRadius: ".2rem",
+
                 margin: "4%",
               }}
             >
@@ -63,15 +63,16 @@ export default function Heros(props) {
                   color: "white",
                   textShadow: "0 0 1.5rem lime",
                   backgroundColor: "#222",
-                  padding: "5vh 10%",
-                  minWidth: "20vw",
+                  padding: "10vh 0",
+                  width: "65vw",
+                  fontSize: '3rem',
                 }}
               >
                 {avengers[idx].name}
               </h2>
               <img
                 src={`${avengers[idx].thumbnail.path}.${avengers[idx].thumbnail.extension}`}
-                style={{ width: "20vw", alignSelf: "center", margin: "3vh 0" }}
+                style={{ width: '60vw', alignSelf: "center", margin: "3vh 0" }}
                 alt={idx}
               ></img>
               <Comics comics={avengers[idx].stories} />

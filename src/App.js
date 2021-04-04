@@ -457,7 +457,7 @@ function App() {
             />
           </div>
         </div>
-        <div className="d-flex flex-column" style={{ flexDirection: "wrap" }}>
+        <div className="d-flex flex-column" style={{ flexDirection: "wrap", width: '100vw' }}>
           <h3
             className="display-4"
             style={{
