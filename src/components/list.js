@@ -2,8 +2,8 @@ import React from 'react'
 
 
 export default function List(props) {
-    const comicList = props
-    const data = comicList.comicNames
+    // const comicList = props
+    // const data = comicList.comicNames
     //console.log(data)
     // data && data.map((item, idx) => {
     //     return console.log("comic List", item )
