@@ -57,7 +57,7 @@ function App() {
   useEffect(() => {
     axios
       .get(
-        `https://api.weatherapi.com/v1/current.json?key=aa1aca8fef9d4c3f9c2123921210502&q=${locationValue}`
+        `https://api.weatherapi.com/v1/current.json?key=dd71922b5e8047a1a2a123926210502&q=${locationValue}`
       )
       .then((res) => {
         setTime(res.data.location.localtime);
@@ -101,7 +101,7 @@ function App() {
   useEffect(() => {
     axios
       .get(
-        `https://api.weatherapi.com/v1/astronomy.json?key=aa1aca8fef9d4c3f9c2123921210502&q=${locationValue}`
+        `https://api.weatherapi.com/v1/astronomy.json?key=dd71922b5e8047a1a2a123926210502&q=${locationValue}`
       )
       .then((res) => {
         setMoon_phase(res.data.astronomy.astro.moon_phase);
