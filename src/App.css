@@ -53,7 +53,7 @@ body {
   background-color: black;
   opacity: 0.9; 
   text-align: center;
-  overflow-y: hidden;
+  overflow-x: hidden;
 }
 
 .btn {
